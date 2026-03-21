@@ -1,0 +1,16 @@
+type: base
+build:
+  auto_version: true
+  architectures:
+    - amd64
+  variants:
+    - tag: "15-pkg"
+      args:
+        PKG_BRANCH: quarterly
+      aliases: ["latest"]
+    - tag: "15-pkg-latest"
+      args:
+        PKG_BRANCH: latest
+
+cit:
+  mode: shell

@@ -1,0 +1,17 @@
+name: base-core
+
+x-daemonless:
+  title: "FreeBSD Base Core"
+  icon: ":simple-freebsd:"
+  category: "Base"
+  description: "Minimal FreeBSD base image without service supervision. Foundation for CLI tools and non-daemon containers."
+  license: "BSD-2-Clause"
+  repo_url: "https://github.com/daemonless/base-core"
+  upstream_url: "https://github.com/freebsd/freebsd-src"
+  web_url: "https://www.freebsd.org/"
+  user: "bsd"
+  upstream_binary: false
+
+  docs: {}
+
+services: {}
