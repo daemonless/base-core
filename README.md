@@ -10,9 +10,10 @@ Source: dbuild templates
 
 Minimal FreeBSD base image without service supervision. Foundation for CLI tools and non-daemon containers.
 
+
 | | |
 |---|---|
-| **Registry** | `localhost/base-core` |
+| **Registry** | `ghcr.io/daemonless/base-core` |
 | **Source** | [https://github.com/freebsd/freebsd-src](https://github.com/freebsd/freebsd-src) |
 | **Website** | [https://www.freebsd.org/](https://www.freebsd.org/) |
 
@@ -34,7 +35,7 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   base-core:
-    image: localhost/base-core:latest
+    image: ghcr.io/daemonless/base-core:latest
     container_name: base-core
     restart: unless-stopped
 ```
@@ -43,7 +44,7 @@ services:
 
 ```bash
 podman run -d --name base-core \
-  localhost/base-core:latest
+  ghcr.io/daemonless/base-core:latest
 ```
 
 ### Ansible
@@ -52,7 +53,7 @@ podman run -d --name base-core \
 - name: Deploy base-core
   containers.podman.podman_container:
     name: base-core
-    image: localhost/base-core:latest
+    image: ghcr.io/daemonless/base-core:latest
     state: started
     restart_policy: always
 ```
@@ -63,3 +64,6 @@ podman run -d --name base-core \
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
 **Base:** FreeBSD 15.0
 
+---
+
+Need help? Join our [Discord](https://discord.gg/Kb9tkhecZT) community.
