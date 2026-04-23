@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-23T20:03:04Z",
+  "generated": "2026-04-23T22:44:15Z",
   "image": "base-core",
   "tags": {
     "15-pkg": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-04-23T20:01:49Z",
+      "generated": "2026-04-23T22:43:07Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -79,11 +79,11 @@
           },
           {
             "name": "FreeBSD-openssl",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-openssl-lib",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-pkg-bootstrap",
@@ -95,7 +95,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0"
+            "version": "15.0p6"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -167,7 +167,7 @@
     "15-pkg-latest": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-04-23T19:59:12Z",
+      "generated": "2026-04-23T22:42:49Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -241,11 +241,11 @@
           },
           {
             "name": "FreeBSD-openssl",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-openssl-lib",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-pkg-bootstrap",
@@ -257,7 +257,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0"
+            "version": "15.0p6"
           },
           {
             "name": "FreeBSD-tcpd",
