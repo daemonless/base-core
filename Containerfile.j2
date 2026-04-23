@@ -44,6 +44,7 @@ RUN mkdir -p /etc/pkg && \
 
 RUN rm -rf /usr/local/etc/pkg/repos && \
     pkg update && \
+    pkg upgrade -y && \
     pkg install -y ${PACKAGES} && \
     chmod 755 /usr/local/sbin && \
     pkg clean -ay && \
