@@ -10,7 +10,6 @@ Source: dbuild templates
 
 Minimal FreeBSD base image without service supervision. Foundation for CLI tools and non-daemon containers.
 
-
 | | |
 |---|---|
 | **Registry** | `ghcr.io/daemonless/base-core` |
@@ -23,6 +22,7 @@ Minimal FreeBSD base image without service supervision. Foundation for CLI tools
 | :--- | :--- | :--- |
 | `15-pkg` / `latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 | `15-pkg-latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
+| `15.1-beta3-pkg` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 
 ## Prerequisites
 
@@ -57,8 +57,6 @@ podman run -d --name base-core \
     state: started
     restart_policy: always
 ```
-
-## Parameters
 
 **Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
