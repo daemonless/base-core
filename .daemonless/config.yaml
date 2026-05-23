@@ -11,9 +11,9 @@ build:
     - tag: "15-pkg-latest"
       args:
         PKG_BRANCH: latest
-    - tag: "15.1-beta3-pkg"
+    - tag: "15.1-rc1-pkg"
       args:
-        FREEBSD_RELEASE: "15.1.beta3"
+        FREEBSD_RELEASE: "15.1.rc1"
         PKG_BRANCH: quarterly
 
 cit:
