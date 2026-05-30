@@ -18,3 +18,4 @@ build:
 
 cit:
   mode: shell
+  puid: false
