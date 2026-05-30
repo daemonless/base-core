@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-23T23:05:31Z",
+  "generated": "2026-05-30T22:23:21Z",
   "image": "base-core",
   "tags": {
     "15-pkg": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-05-23T23:04:23Z",
+      "generated": "2026-05-30T22:22:10Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -167,7 +167,7 @@
     "15-pkg-latest": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-05-23T23:03:56Z",
+      "generated": "2026-05-30T22:21:16Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -327,135 +327,135 @@
       }
     },
     "15.1-rc1-pkg": {
-      "app_version": "15.1.rc1.20260522032907",
+      "app_version": "15.1.rc2.20260530062026",
       "arch": "amd64",
-      "generated": "2026-05-23T23:02:33Z",
+      "generated": "2026-05-30T22:22:12Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-bzip2-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-certctl",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-clibs",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-ctf-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-fetch",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-kerberos-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libarchive",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libbsdstat",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libcasper",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libexecinfo",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libldns",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libmagic",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-libucl",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-mtree",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-ncurses-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-openssl",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-pam-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-pkg-bootstrap",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-rc",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-tcpd",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-ufs-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-utilities",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-xz-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-zfs-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-zlib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "FreeBSD-zstd-lib",
-            "version": "15.1.rc1.20260522032907"
+            "version": "15.1.rc2.20260530062026"
           },
           {
             "name": "ca_root_nss",
