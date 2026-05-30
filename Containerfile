@@ -57,6 +57,8 @@ RUN rm -rf /usr/local/etc/pkg/repos && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
 RUN pw groupadd -n bsd -g 1000 && \
-    pw useradd -n bsd -u 1000 -g bsd -d /config -s /bin/sh -c "Container User"
+    pw useradd -n bsd -u 1000 -g bsd -d /config -s /bin/sh -c "Container User" && \
+    mkdir -p /config && \
+    chown bsd:bsd /config
 
 CMD ["tail", "-f", "/dev/null"]
