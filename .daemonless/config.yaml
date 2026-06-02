@@ -3,6 +3,7 @@ build:
   auto_version: true
   architectures:
     - amd64
+    - aarch64
   variants:
     - tag: "15-pkg"
       args:
@@ -11,9 +12,9 @@ build:
     - tag: "15-pkg-latest"
       args:
         PKG_BRANCH: latest
-    - tag: "15.1-rc1-pkg"
+    - tag: "15.1-rc2-pkg"
       args:
-        FREEBSD_RELEASE: "15.1.rc1"
+        FREEBSD_RELEASE: "15.1.rc2"
         PKG_BRANCH: quarterly
 
 cit:
