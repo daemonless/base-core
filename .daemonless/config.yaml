@@ -8,7 +8,6 @@ build:
     - tag: "15-pkg"
       args:
         PKG_BRANCH: quarterly
-      aliases: ["latest"]
     - tag: "15-pkg-latest"
       args:
         PKG_BRANCH: latest
@@ -16,6 +15,7 @@ build:
       args:
         FREEBSD_RELEASE: "15.1"
         PKG_BRANCH: quarterly
+      aliases: ["latest"]
     - tag: "15.1-pkg-latest"
       args:
         FREEBSD_RELEASE: "15.1"

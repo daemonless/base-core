@@ -20,9 +20,9 @@ Minimal FreeBSD base image without service supervision. Foundation for CLI tools
 
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
-| `15-pkg` / `latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
+| `15-pkg` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 | `15-pkg-latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
-| `15.1-pkg` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
+| `15.1-pkg` / `latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 | `15.1-pkg-latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 
 ## Prerequisites
