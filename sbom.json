@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-02T23:19:25Z",
+  "generated": "2026-07-13T10:12:56Z",
   "image": "base-core",
   "tags": {
     "15-pkg": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-07-02T23:18:11Z",
+      "generated": "2026-07-13T10:11:44Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -127,11 +127,11 @@
           },
           {
             "name": "ca_root_nss",
-            "version": "3.124"
+            "version": "3.125"
           },
           {
             "name": "jq",
-            "version": "1.8.1"
+            "version": "1.8.2"
           },
           {
             "name": "oniguruma",
@@ -139,7 +139,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.6.2_1"
+            "version": "2.7.5"
           }
         ],
         "go": [],
@@ -167,7 +167,7 @@
     "15-pkg-latest": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-07-02T23:17:54Z",
+      "generated": "2026-07-13T10:11:30Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -289,7 +289,7 @@
           },
           {
             "name": "ca_root_nss",
-            "version": "3.124"
+            "version": "3.125"
           },
           {
             "name": "jq",
@@ -329,7 +329,7 @@
     "15.1-pkg": {
       "app_version": "15.1",
       "arch": "amd64",
-      "generated": "2026-07-02T23:17:51Z",
+      "generated": "2026-07-13T10:11:17Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -459,11 +459,11 @@
           },
           {
             "name": "ca_root_nss",
-            "version": "3.124"
+            "version": "3.125"
           },
           {
             "name": "jq",
-            "version": "1.8.1"
+            "version": "1.8.2"
           },
           {
             "name": "oniguruma",
@@ -471,7 +471,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.6.2_1"
+            "version": "2.7.5"
           }
         ],
         "go": [],
@@ -499,7 +499,7 @@
     "15.1-pkg-latest": {
       "app_version": "15.1",
       "arch": "amd64",
-      "generated": "2026-07-02T23:18:12Z",
+      "generated": "2026-07-13T10:11:05Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -629,7 +629,7 @@
           },
           {
             "name": "ca_root_nss",
-            "version": "3.124"
+            "version": "3.125"
           },
           {
             "name": "jq",
