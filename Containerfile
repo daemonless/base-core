@@ -9,7 +9,7 @@ FROM ghcr.io/freebsd/freebsd-runtime:${FREEBSD_RELEASE}
 
 ARG FREEBSD_MAJOR=15
 ARG PKG_BRANCH=quarterly
-ARG PACKAGES="FreeBSD-utilities jq ca_root_nss"
+ARG PACKAGES="FreeBSD-utilities FreeBSD-locales jq ca_root_nss"
 ARG VERSION=""
 
 LABEL org.opencontainers.image.title="FreeBSD Base Core" \
@@ -24,6 +24,7 @@ LABEL org.opencontainers.image.title="FreeBSD Base Core" \
     io.daemonless.packages="${PACKAGES}"
 
 ENV ASSUME_ALWAYS_YES=yes
+ENV LANG=C.UTF-8
 ENV PUID=1000
 ENV PGID=1000
 ENV TZ=UTC

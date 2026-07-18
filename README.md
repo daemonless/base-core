@@ -17,7 +17,6 @@ Minimal FreeBSD base image without service supervision. Foundation for CLI tools
 | **Website** | [https://www.freebsd.org/](https://www.freebsd.org/) |
 
 ## Version Tags
-
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
 | `15-pkg` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
@@ -26,7 +25,6 @@ Minimal FreeBSD base image without service supervision. Foundation for CLI tools
 | `15.1-pkg-latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 
 ## Prerequisites
-
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
@@ -59,9 +57,9 @@ podman run -d --name base-core \
     restart_policy: always
 ```
 
-**Architectures:** amd64, aarch64
+**Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
-**Base:** FreeBSD 15.0
+**Base:** FreeBSD 15.1
 
 ---
 
