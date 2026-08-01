@@ -14,11 +14,12 @@ build:
       args:
         FREEBSD_RELEASE: "15.1"
         PKG_BRANCH: quarterly
-      aliases: ["latest"]
+      aliases: ["latest", "15"]
     - tag: "15.1-pkg-latest"
       args:
         FREEBSD_RELEASE: "15.1"
         PKG_BRANCH: latest
+      aliases: ["15-latest"]
 
 cit:
   mode: shell
