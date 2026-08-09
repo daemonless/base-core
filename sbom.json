@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-07T22:42:22Z",
+  "generated": "2026-08-09T17:15:38Z",
   "image": "base-core",
   "tags": {
-    "15-pkg": {
+    "15-pkg-amd64": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-08-07T22:40:30Z",
+      "generated": "2026-08-09T17:12:40Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -270,10 +270,10 @@
         "total": 34
       }
     },
-    "15-pkg-latest": {
+    "15-pkg-latest-amd64": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-08-07T22:40:18Z",
+      "generated": "2026-08-09T17:13:04Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -538,10 +538,10 @@
         "total": 34
       }
     },
-    "15.1-pkg": {
+    "15.1-pkg-amd64": {
       "app_version": "15.1",
       "arch": "amd64",
-      "generated": "2026-08-07T22:39:58Z",
+      "generated": "2026-08-09T17:12:52Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -820,10 +820,10 @@
         "total": 36
       }
     },
-    "15.1-pkg-latest": {
+    "15.1-pkg-latest-amd64": {
       "app_version": "15.1",
       "arch": "amd64",
-      "generated": "2026-08-07T22:40:41Z",
+      "generated": "2026-08-09T17:12:30Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
