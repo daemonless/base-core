@@ -1,0 +1,46 @@
+#!/bin/sh
+# ports-build [--cleanup] <cat/port>[,...] [extra-paths[,...]]
+#
+# Build ports from the ports tree when the pkg repo can't supply them (broken
+# port, not yet packaged, newer version needed). Mk, Templates and Keywords are
+# always extracted, plus every port built and any extra paths given.
+# Build deps must already be installed as packages -- this does not recurse.
+#
+#   ports-build --cleanup math/py-ml-dtypes
+#   ports-build devel/py-hachoir lang/python312
+#   ports-build --cleanup math/py-ml-dtypes,devel/py-hachoir lang/python312,devel/py-setuptools
+set -eu
+
+cleanup=0
+if [ "${1:-}" = "--cleanup" ]; then cleanup=1; shift; fi
+
+builds=${1:-}
+extras=${2:-}
+[ -n "$builds" ] || { echo "usage: ports-build [--cleanup] <cat/port>[,...] [extra[,...]]" >&2; exit 64; }
+
+PORTSDIR=${PORTSDIR:-/usr/ports}
+# The framework reads OSVERSION from sys/param.h; supply it so callers do not
+# need the dev headers just to build a port.
+OSVERSION=${OSVERSION:-$(sysctl -n kern.osreldate)}; export OSVERSION
+PORTS_TARBALL=${PORTS_TARBALL:-https://download.freebsd.org/ports/ports/ports.tar.zst}
+
+members="ports/Mk ports/Templates ports/Keywords"
+for p in $(echo "$builds,$extras" | tr ',' ' '); do
+    [ -n "$p" ] && members="$members ports/$p"
+done
+
+mkdir -p "$PORTSDIR"
+fetch -qo /tmp/ports.tar.zst "$PORTS_TARBALL"
+# shellcheck disable=SC2086
+tar -xf /tmp/ports.tar.zst -C "$PORTSDIR" --strip-components=1 $members
+rm -f /tmp/ports.tar.zst
+
+for p in $(echo "$builds" | tr ',' ' '); do
+    [ -n "$p" ] || continue
+    [ -d "$PORTSDIR/$p" ] || { echo "ports-build: $p not in the ports tree" >&2; exit 1; }
+    echo "ports-build: building $p"
+    make -C "$PORTSDIR/$p" BATCH=yes install clean
+done
+
+[ "$cleanup" = 1 ] && rm -rf "$PORTSDIR" /var/db/ports /var/cache/ccache 2>/dev/null
+exit 0
