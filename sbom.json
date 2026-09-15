@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-29T17:08:17Z",
+  "generated": "2026-09-15T12:33:04Z",
   "image": "base-core",
   "tags": {
     "15-pkg-amd64": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-08-29T17:07:16Z",
+      "generated": "2026-09-15T12:32:14Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -224,7 +224,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.127"
+            "version": "3.129"
           },
           {
             "licenses": [
@@ -273,7 +273,7 @@
     "15-pkg-latest-amd64": {
       "app_version": "15.0",
       "arch": "amd64",
-      "generated": "2026-08-29T17:07:44Z",
+      "generated": "2026-09-15T12:32:31Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -492,7 +492,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.127"
+            "version": "3.129"
           },
           {
             "licenses": [
@@ -541,7 +541,7 @@
     "15.1-pkg-amd64": {
       "app_version": "15.1",
       "arch": "amd64",
-      "generated": "2026-08-29T17:07:23Z",
+      "generated": "2026-09-15T12:32:02Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -774,7 +774,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.127"
+            "version": "3.129"
           },
           {
             "licenses": [
@@ -823,7 +823,7 @@
     "15.1-pkg-latest-amd64": {
       "app_version": "15.1",
       "arch": "amd64",
-      "generated": "2026-08-29T17:07:04Z",
+      "generated": "2026-09-15T12:32:14Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1056,7 +1056,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.127"
+            "version": "3.129"
           },
           {
             "licenses": [
