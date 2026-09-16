@@ -9,7 +9,7 @@ FROM ghcr.io/freebsd/freebsd-runtime:${FREEBSD_RELEASE}
 
 ARG FREEBSD_MAJOR=15
 ARG PKG_BRANCH=quarterly
-ARG PACKAGES="FreeBSD-utilities FreeBSD-locales jq ca_root_nss"
+ARG PACKAGES="FreeBSD-utilities FreeBSD-locales FreeBSD-dhclient jq ca_root_nss"
 ARG VERSION=""
 ARG PKG_CACHE_URL=""
 
