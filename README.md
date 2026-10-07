@@ -25,67 +25,6 @@ Minimal FreeBSD base image without service supervision. Foundation for CLI tools
 | `15` / `15.1-pkg` / `latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 | `15-latest` / `15.1-pkg-latest` | **FreeBSD Port**. Built from FreeBSD packages. | Production stability. |
 
-## Prerequisites
-Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
-
-## Deployment
-
-### Podman Compose
-
-```yaml
-services:
-  base-core:
-    image: "ghcr.io/daemonless/base-core:latest"
-    container_name: base-core
-    # always (not unless-stopped) so FreeBSD's podman rc.d auto-starts it at boot
-    restart: always
-```
-
-Save as `compose.yaml`, then run `podman-compose up -d`.
-
-### Podman CLI
-
-```bash
-podman run -d --name base-core \
-  ghcr.io/daemonless/base-core:latest
-```
-
-Save as `run.sh`, then run `sh run.sh`.
-
-### Bastille
-
-> [!WARNING]
-> Bastille's OCI support is **experimental**. It requires `buildah` and shares the host network stack (`inherit`). Mount volumes with `--volume HOST JAIL`; without it, image-declared volumes are stored under `${bastille_volumesdir}/${jail}`.
-
-```yaml
-services:
-  base-core:
-    name: base-core
-    image: "ghcr.io/daemonless/base-core:latest"
-    network:
-      - mode: host
-```
-
-Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
-
-```bash
-bastille create -O \
-  base-core ghcr.io/daemonless/base-core:latest inherit
-```
-
-### Ansible
-
-```yaml
-- name: Deploy base-core
-  containers.podman.podman_container:
-    name: base-core
-    image: "ghcr.io/daemonless/base-core:latest"
-    state: started
-    restart_policy: always
-```
-
-Save as `base-core-deploy.yaml`, then run `ansible-playbook base-core-deploy.yaml`.
-
 **Architectures:** amd64, aarch64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
 **Base:** FreeBSD 15.1
