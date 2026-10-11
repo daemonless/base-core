@@ -4,7 +4,7 @@
 # Source: Containerfile.j2
 # --------------------------------------------------------------------------
 
-ARG FREEBSD_RELEASE=15.0
+ARG FREEBSD_RELEASE=15.1
 FROM ghcr.io/freebsd/freebsd-runtime:${FREEBSD_RELEASE}
 
 ARG FREEBSD_MAJOR=15

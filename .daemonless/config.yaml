@@ -5,22 +5,16 @@ build:
     - amd64
     - aarch64
   variants:
-    - tag: "15-pkg"
-      args:
-        PKG_BRANCH: quarterly
-    - tag: "15-pkg-latest"
-      args:
-        PKG_BRANCH: latest
     - tag: "15.1-pkg"
       args:
         FREEBSD_RELEASE: "15.1"
         PKG_BRANCH: quarterly
-      aliases: ["latest", "15"]
+      aliases: ["latest", "15", "15-pkg"]
     - tag: "15.1-pkg-latest"
       args:
         FREEBSD_RELEASE: "15.1"
         PKG_BRANCH: latest
-      aliases: ["15-latest"]
+      aliases: ["15-latest", "15-pkg-latest"]
 
 cit:
   mode: shell
