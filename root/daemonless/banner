@@ -1,0 +1,158 @@
+#!/bin/sh
+# Startup banner: the logo, then what this container runs on.
+# DAEMONLESS_BANNER=color (default) | plain (no logo) | off.
+# NO_COLOR or TERM=dumb pick plain: no colour at all. The banner is written
+# before anyone reads the log, so the viewer's terminal can't be detected here.
+
+mode=${DAEMONLESS_BANNER:-}
+if [ -z "$mode" ]; then
+	if [ -n "${NO_COLOR:-}" ] || [ "${TERM:-}" = dumb ]; then
+		mode=plain
+	else
+		mode=color
+	fi
+fi
+[ "$mode" = off ] && exit 0
+
+logo() {
+# The logo as pixels, two per text row (a half block's top and bottom),
+# drawn by awk: one digit per pixel, an index into the palette below, and
+# . for none. Edit the picture here, not escape codes.
+R="\033[0m"
+# Border #1D2834, slate #313F4E, trident red #E23D31: solid colours,
+# no in-between shades, which looked blurred in a terminal. Title in
+# trident red and slate: both read on a dark or a light background
+# (fjord's light log pane).
+pal="38;2;29;40;52 38;2;49;63;78 38;2;226;61;49"
+TW="\033[1;38;2;226;61;49m"; TS="\033[38;2;110;126;145m"
+echo
+awk -v pal="$pal" '
+function row(t, b,   w, i, c, d, ch, nf, nb, cf, cb, out) {
+	w = length(t) > length(b) ? length(t) : length(b)
+	out = "     "
+	for (i = 1; i <= w; i++) {
+		c = substr(t, i, 1); d = substr(b, i, 1)
+		if (c == "") c = "."
+		if (d == "") d = "."
+		if (c == "." && d == ".") { ch = " "; nf = cf; nb = "" }
+		else if (d == ".") { ch = "\342\226\200"; nf = fg[c]; nb = "" }
+		else if (c == ".") { ch = "\342\226\204"; nf = fg[d]; nb = "" }
+		else { ch = "\342\226\200"; nf = fg[c]; nb = bg[d] }
+		if (nb != cb) { out = out "\033[" (nb == "" ? "49" : nb) "m"; cb = nb }
+		if (nf != cf) { out = out "\033[" nf "m"; cf = nf }
+		out = out ch
+	}
+	print out "\033[0m"
+}
+BEGIN {
+	n = split(pal, p, " ")
+	for (i = 1; i <= n; i++) { fg[i - 1] = p[i]; b = p[i]; sub(/^38/, "48", b); bg[i - 1] = b }
+}
+NR % 2 { top = $0; next }
+{ row(top, $0) }
+END { if (NR % 2) row(top, "") }
+' <<'EOF'
+
+...................00
+.................000000
+...............0000110000
+.............00111111111100
+............0001111221111000
+..........00111111122111111100
+........000011111122221111110000
+......0011111111112222111111111100
+.....000111111111222222111111111000
+...0011111111111122222211111111111100
+.00001111211111122222222111111211110000
+0011111112211111222222221111122111111100
+0111111112211112222222222111122111111110
+0111111112222112222222222112222111111110
+0111111112222111222222221112222111111110
+0111111112222211112222111122222111111110
+0111111112222211112222111122222111111110
+0111111112222211112222111122222111111110
+0111111112122221112222111222212111111110
+0111111111122221112222111222211111111110
+0111111111122221112222111222211111111110
+0111111111122221112222111222211111111110
+0111111111122221112222111222211111111110
+0111111111122221112222111222211111111110
+0111111111222211112222111122221111111110
+0111111111222211112222111122221111111110
+0111111112222111112222111112222111111110
+0111111112222221112222111222222111111110
+0111111112222222112222112222222111111110
+0111111111222222222222222222221111111110
+0111111111122222222222222222211111111110
+0111111111111222222222222221111111111110
+0011111111111122222222222211111111111100
+.00001111111111122222222111111111110000
+...0011111111111122222211111111111100
+.....000111111111122221111111111000
+......0011111111112222111111111100
+........000011111122221111110000
+..........00111111222211111100
+............0001112222111000
+.............00111222211100
+...............0002222000
+.................022220
+..................0220
+EOF
+printf '%b' \
+"\n" \
+"                 ${TW}DAEMONLESS.IO${R}\n" \
+"             ${TS}FREEBSD OCI CONTAINERS${R}\n" \
+"\n"
+}
+
+L= E=
+if [ "$mode" = color ]; then
+	L="\033[38;2;110;126;145m" E="\033[0m"
+fi
+line() {
+	printf "  ${L}%-8s${E} %s\n" "$1" "$2"
+}
+
+[ "$mode" = plain ] || logo
+
+[ -s /app/version ] && line version "$(cat /app/version)"
+
+user=$(freebsd-version -u 2>/dev/null)
+host=$(uname -r)
+if [ -z "$user" ] || [ "$user" = "$host" ]; then
+	line freebsd "$host"
+elif [ "${user%-p*}" = "${host%-p*}" ]; then
+	# Same release, another patch level: the usual case, kept short.
+	hp=${host#"${host%-p*}"}
+	[ -n "$hp" ] || hp=-unpatched
+	line freebsd "$user (host ${hp#-})"
+else
+	line freebsd "$user userland · $host host"
+fi
+
+if [ "$(sysctl -n security.jail.jailed 2>/dev/null)" = 1 ]; then
+	ips=$(ifconfig 2>/dev/null | awk '$1 == "inet" && $2 !~ /^127\./ { printf "%s%s", sep, $2; sep = ", " }')
+	if [ "$(sysctl -n security.jail.vnet 2>/dev/null)" = 1 ]; then
+		net="vnet${ips:+ $ips}"
+	else
+		net="host network"
+	fi
+	if [ "$(sysctl -n security.jail.mlock_allowed 2>/dev/null)" = 1 ]; then
+		net="$net · allow.mlock yes"
+	else
+		net="$net · allow.mlock no"
+	fi
+	line jail "$net"
+fi
+
+if [ "$(id -u)" = 0 ] && id bsd >/dev/null 2>&1; then
+	line user "bsd ${PUID:-1000}:${PGID:-1000} · TZ ${TZ:-UTC}"
+else
+	line user "$(id -u):$(id -g) · TZ ${TZ:-UTC}"
+fi
+
+# A 15 userland on a 14 kernel fails in odd ways (missing syscalls).
+if [ -n "$user" ] && [ "${user%%.*}" -gt "${host%%.*}" ] 2>/dev/null; then
+	line '!' "FreeBSD ${user%%-*} userland on a ${host%%-*} host: use an image tag for ${host%%.*}"
+fi
+echo
