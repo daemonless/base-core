@@ -1,33 +1,62 @@
 #!/bin/sh
 # Startup banner: the logo, then what this container runs on.
-# DAEMONLESS_BANNER=color (default) | plain (no logo) | off.
-# NO_COLOR or TERM=dumb pick plain: no colour at all. The banner is written
-# before anyone reads the log, so the viewer's terminal can't be detected here.
+# Mode from a flag (banner --color) or DAEMONLESS_BANNER; see usage.
+# The banner is written before anyone reads the log, so the viewer's
+# terminal can't be detected here.
+# color hangs `appjail logs read`: less calls a file with more than 5
+# escapes in its first 256 bytes binary and waits on a prompt.
 
-mode=${DAEMONLESS_BANNER:-}
-if [ -z "$mode" ]; then
-	if [ -n "${NO_COLOR:-}" ] || [ "${TERM:-}" = dumb ]; then
-		mode=plain
-	else
-		mode=color
-	fi
-fi
+usage() {
+	cat <<'EOF'
+usage: banner [--mono | --color | --plain | --off | --help]
+  --mono   logo and text, no color (default)
+  --color  full-color logo; plain less (appjail logs read) can't show it
+  --plain  no logo, just what this container runs on
+  --off    nothing
+In a container, set DAEMONLESS_BANNER=mono|color|plain|off instead.
+NO_COLOR turns color into mono; TERM=dumb picks plain.
+EOF
+}
+
+case "${1:-}" in
+-h|--help) usage; exit 0 ;;
+--color|--mono|--plain|--off) mode=${1#--} ;;
+'') mode=${DAEMONLESS_BANNER:-mono} ;;
+*) usage >&2; exit 2 ;;
+esac
+[ "$mode" = color ] && [ -n "${NO_COLOR:-}" ] && mode=mono
+[ "${TERM:-}" = dumb ] && [ "$mode" != off ] && mode=plain
 [ "$mode" = off ] && exit 0
 
 logo() {
 # The logo as pixels, two per text row (a half block's top and bottom),
-# drawn by awk: one digit per pixel, an index into the palette below, and
-# . for none. Edit the picture here, not escape codes.
-R="\033[0m"
-# Border #1D2834, slate #313F4E, trident red #E23D31: solid colours,
-# no in-between shades, which looked blurred in a terminal. Title in
-# trident red and slate: both read on a dark or a light background
-# (fjord's light log pane).
-pal="38;2;29;40;52 38;2;49;63;78 38;2;226;61;49"
-TW="\033[1;38;2;226;61;49m"; TS="\033[38;2;110;126;145m"
+# drawn by awk: 0 border, 1 fill, 2 trident, . none. Edit the picture
+# here, not escape codes. mono draws border and trident and leaves the
+# fill empty. color: border #1D2834, slate #313F4E, trident red #E23D31,
+# solid colors, no in-between shades, which looked blurred in a terminal.
+R= TW= TS=
+if [ "$mode" = color ]; then
+	# Title in trident red and slate: both read on a dark or a light
+	# background (fjord's light log pane).
+	R="\033[0m"; TW="\033[1;38;2;226;61;49m"; TS="\033[38;2;110;126;145m"
+fi
 echo
-awk -v pal="$pal" '
-function row(t, b,   w, i, c, d, ch, nf, nb, cf, cb, out) {
+awk -v mode="$mode" -v pal="38;2;29;40;52 38;2;49;63;78 38;2;226;61;49" '
+function ink(p) { return p == "0" || p == "2" }
+function mono(t, b,   w, i, c, d, out) {
+	w = length(t) > length(b) ? length(t) : length(b)
+	out = "     "
+	for (i = 1; i <= w; i++) {
+		c = substr(t, i, 1); d = substr(b, i, 1)
+		if (ink(c) && ink(d)) out = out "\342\226\210"
+		else if (ink(c)) out = out "\342\226\200"
+		else if (ink(d)) out = out "\342\226\204"
+		else out = out " "
+	}
+	sub(/ +$/, "", out)
+	print out
+}
+function color(t, b,   w, i, c, d, ch, nf, nb, cf, cb, out) {
 	w = length(t) > length(b) ? length(t) : length(b)
 	out = "     "
 	for (i = 1; i <= w; i++) {
@@ -44,6 +73,7 @@ function row(t, b,   w, i, c, d, ch, nf, nb, cf, cb, out) {
 	}
 	print out "\033[0m"
 }
+function row(t, b) { if (mode == "color") color(t, b); else mono(t, b) }
 BEGIN {
 	n = split(pal, p, " ")
 	for (i = 1; i <= n; i++) { fg[i - 1] = p[i]; b = p[i]; sub(/^38/, "48", b); bg[i - 1] = b }
