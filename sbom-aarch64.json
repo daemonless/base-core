@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-31T23:32:50Z",
+  "generated": "2026-11-04T11:33:27Z",
   "image": "base-core",
   "tags": {
     "15.1-pkg-aarch64": {
       "app_version": "15.1",
       "arch": "aarch64",
-      "generated": "2026-10-31T23:31:13Z",
+      "generated": "2026-11-04T11:31:35Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -252,7 +252,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.131"
+            "version": "3.132"
           },
           {
             "licenses": [
@@ -301,7 +301,7 @@
     "15.1-pkg-latest-aarch64": {
       "app_version": "15.1",
       "arch": "aarch64",
-      "generated": "2026-10-31T23:31:18Z",
+      "generated": "2026-11-04T11:31:41Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -548,7 +548,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.131"
+            "version": "3.132"
           },
           {
             "licenses": [
