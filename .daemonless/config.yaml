@@ -15,13 +15,13 @@ build:
         FREEBSD_RELEASE: "15.1"
         PKG_BRANCH: latest
       aliases: ["15-latest", "15-pkg-latest"]
-    - tag: "15.2.beta1-pkg"
+    - tag: "15.2.beta2-pkg"
       args:
-        FREEBSD_RELEASE: "15.2.beta1"
+        FREEBSD_RELEASE: "15.2.beta2"
         PKG_BRANCH: quarterly
-    - tag: "15.2.beta1-pkg-latest"
+    - tag: "15.2.beta2-pkg-latest"
       args:
-        FREEBSD_RELEASE: "15.2.beta1"
+        FREEBSD_RELEASE: "15.2.beta2"
         PKG_BRANCH: latest
 
 cit:
